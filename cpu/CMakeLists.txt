@@ -1,6 +1,7 @@
 
 add_library(cpu
     src/cpu.c
+    src/InstructionSet.c
 )
 
 target_include_directories(cpu PUBLIC
