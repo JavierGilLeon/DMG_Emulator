@@ -5,7 +5,7 @@
 #include "common.h"
 
 typedef struct gameboy_cpu{
-
+	word reg;
 
 } GAMEBOY_CPU;
 
