@@ -1,0 +1,9 @@
+/build/
+/CMakeFiles/
+/CMakeCache.txt
+/compile_commands.json
+/Makefile
+/*.cmake
+/lib*.a
+/lib*.so
+/lib*.dylib
