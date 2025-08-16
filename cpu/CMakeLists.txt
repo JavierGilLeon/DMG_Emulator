@@ -5,4 +5,5 @@ add_library(cpu
 
 target_include_directories(cpu PUBLIC
  include
+ ${CMAKE_SOURCE_DIR}/include
 )
