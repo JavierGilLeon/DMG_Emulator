@@ -3,7 +3,6 @@
 #define H_CPU_H
 
 #include "common.h"
-#include "memory.h"
 
 typedef union cpu_regs{
 	struct{

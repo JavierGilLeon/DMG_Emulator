@@ -1,7 +1,6 @@
 #include "memory.h"
-#include <stdio.h>
-#include <stdlib.h>
-
+#include<stdio.h>
+#include<stdlib.h>
 
 byte memory[0x10000];
 
