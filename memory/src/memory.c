@@ -3,6 +3,8 @@
 #include <stdlib.h>
 
 
+byte memory[0x10000];
+
 byte getDataFrom(word ADDR){
 
     if(ADDR < 0 || ADDR > 0xFFFF){
