@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-byte memory[0x10000]; // 64 KB
+extern byte memory[0x10000]; // 64 KB
 											// [0000h - 3FFFh] ROM0:  Non switchable ROM bank
 											// [4000h - 7FFFh] ROMX:  Switchable ROM bank 
 											// [8000h - 9FFFh] VRAM:  Video RAM
