@@ -23,4 +23,9 @@ typedef struct gameboy_cpu{
 
 extern GAMEBOY_CPU cpu;
 
+
+
+byte FetchInstr(void);
+void InitCpuRegs(void);
+
 #endif

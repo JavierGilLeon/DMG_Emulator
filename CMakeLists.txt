@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 4.0.3) 
 project(DMG_Emulator C)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Module Libraries
 add_subdirectory(memory)
