@@ -18,6 +18,7 @@ extern byte memory[0x10000]; // 64 KB
 											// [FFFh] 			 IE Reg:  Interrupt enable reg
 
 
+void InitMem    (void);
 byte getDataFrom(word ADDR);
 void writeDataTo(word ADDR, byte REG);
 

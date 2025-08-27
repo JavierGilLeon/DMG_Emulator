@@ -12,14 +12,32 @@ typedef union cpu_regs{
 	word all;
 }CPU_REGS;
 
+typedef union cpu_acc_flags{
+	word all;
+
+	struct{
+		byte High; 				//Accumulator
+	
+		struct{
+			unsigned Z : 1;
+			unsigned N : 1;
+			unsigned H : 1;
+			unsigned C : 1;
+		}Low;             //Flags
+	};
+
+}CPU_ACC_FLAGS;
+
 typedef struct gameboy_cpu{
-	CPU_REGS AF;   // Accumulator & Flags
-	CPU_REGS BC;   // Registers B & C
-	CPU_REGS DE;   // Registers D & E
-	CPU_REGS HL;   // Registers H & L
-	word     SP;   // Stack Pointer
-	word     PC;   // Program Counter
+	CPU_ACC_FLAGS  AF;   // Accumulator & Flags    
+	CPU_REGS			 BC;   // Registers B & C
+	CPU_REGS			 DE;   // Registers D & E
+	CPU_REGS			 HL;   // Registers H & L
+	word					 SP;   // Stack Pointer
+	word					 PC;   // Program Counter
 } GAMEBOY_CPU;
+
+
 
 extern GAMEBOY_CPU cpu;
 
@@ -27,5 +45,8 @@ extern GAMEBOY_CPU cpu;
 
 byte FetchInstr(void);
 void InitCpuRegs(void);
+
+void DecSP(void);
+void IncSP(void);
 
 #endif

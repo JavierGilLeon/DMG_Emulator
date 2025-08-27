@@ -4,6 +4,6 @@
 typedef unsigned char byte;
 typedef unsigned short word;
 
-#define MEM_SIZE 0x10000;
+#define MEM_SIZE 0x10000
 
 #endif

@@ -1,18 +1,14 @@
 #include "cpu.h"
 #include "memory.h"
 
-//---- 0x02 ---- Load from accumulator (Indirect BC) ----
-// Load to the absolute address specified by the 16-bit register
-// BC, data from the 8-bit A register
-void LD_BC_A(void){ 
-    memory[cpu.BC] = cpu.AF.High;
-} 
 
-void LD_B_n				   (void); // 0x06
-void LD_A_BC				 (void); // 0x0A
-void LD_C_n			  	 (void); // 0x0E
 
-void LD_DE_A				 (void); // 0x12
+void LD_BC_A(void)   {memory[cpu.BC.all] = cpu.AF.High;} 
+void LD_B_n(byte n)  {cpu.BC.High = n;}
+void LD_A_BC(void)   {cpu.AF.High = memory[cpu.BC.all];}
+void LD_C_n(byte n)  {cpu.BC.Low = n;}
+
+void LD_DE_A(void)  { }
 void LD_D_n			  	 (void); // 0x16
 void LD_A_DE				 (void); // 0x1A
 void LD_E_n				   (void); // 0x1E

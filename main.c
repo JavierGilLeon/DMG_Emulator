@@ -1,8 +1,13 @@
 #include <stdio.h>
 
+#include "cpu.h"
+#include "memory.h"
+
 
 int main(){
-//   LD_BC_A();   
+    InitCpuRegs();
+    InitMem();
+     
     return 0;
 
 }
