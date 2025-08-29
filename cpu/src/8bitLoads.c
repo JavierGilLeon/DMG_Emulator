@@ -2,25 +2,84 @@
 #include "memory.h"
 
 
+//---------------- 0x02 ----------------
+void LD_BC_A(void){
+    memory[cpu.BC.all] = cpu.AF.High;
+}  
 
-void LD_BC_A(void)   {memory[cpu.BC.all] = cpu.AF.High;} 
-void LD_B_n(byte n)  {cpu.BC.High = n;}
-void LD_A_BC(void)   {cpu.AF.High = memory[cpu.BC.all];}
-void LD_C_n(byte n)  {cpu.BC.Low = n;}
+//---------------- 0x06 ----------------
+void LD_B_n (byte n){
+    cpu.BC.High = n;
+}
 
-void LD_DE_A(void)  { }
-void LD_D_n			  	 (void); // 0x16
-void LD_A_DE				 (void); // 0x1A
-void LD_E_n				   (void); // 0x1E
+//---------------- 0x0A ----------------
+void LD_A_BC(void){
+    cpu.AF.High = memory[cpu.BC.all];
+} 
 
-void LD_HLP_A				 (void); // 0x22
-void LD_H_n				   (void); // 0x26
-void LD_A_HLP				 (void); // 0x2A
-void LD_L_n				   (void); // 0x2E
+//---------------- 0x0E ----------------
+void LD_C_n (byte n){
+    cpu.BC.Low = n;
+}
 
-void LD_HLM_A				 (void); // 0x32
-void LD_HL_n				 (void); // 0x36
-void LD_A_HLM 			 (void); // 0x3A
+//---------------- 0x12 ----------------
+void LD_DE_A(void){
+    memory[cpu.DE.all] = cpu.AF.High;
+} 
+
+//---------------- 0x16 ----------------
+void LD_D_n(byte n){
+    cpu.DE.High = n;
+}
+
+//---------------- 0x1A ----------------
+void LD_A_DE(void){
+    cpu.AF.High = memory[cpu.DE.all];
+} 
+
+//---------------- 0x1E ----------------
+void LD_E_n(byte n){
+    cpu.DE.Low = n;
+}
+
+//---------------- 0x22 ----------------
+void LD_HLP_A(void){
+    memory[cpu.HL.all] = cpu.AF.High;
+    cpu.HL.all++;
+}  
+
+//---------------- 0x26 ----------------
+void LD_H_n(byte n){
+    cpu.DE.High = n;
+}
+
+//---------------- 0x2A ----------------
+void LD_A_HLP(void){
+    cpu.AF.High = memory[cpu.HL.all];
+    cpu.HL.all++;
+}
+
+//---------------- 0x2E ----------------
+void LD_L_n(byte n){
+    cpu.DE.Low = n;
+}
+
+//---------------- 0x32 ----------------
+void LD_HLM_A(void){
+    memory[cpu.HL.all] = cpu.AF.High;
+    cpu.HL.all--;
+}
+
+//---------------- 0x36 ----------------
+void LD_HL_n(byte n){
+    memory[cpu.HL.all] = n;
+}
+
+//---------------- 0x3A ----------------
+void LD_A_HLM(void){
+    memory[cpu.HL.all] = cpu.AF.High;
+    cpu.HL.all--;
+}
 void LD_A_n 				 (void); // 0x3E
 
 void LD_B_B 				 (void); // 0x40

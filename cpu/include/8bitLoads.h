@@ -6,142 +6,20 @@
 
 
 
-/** @brief Load from accumulator (Indirect BC)
- *
- * Load to the absolute address specified by the 16-bit register
- * BC, data from the 8-bit A register 
- *
- * Instruction = 0x02
- *
- * 
- * @return none
-*/
-void LD_BC_A(void);   
+void LD_BC_A     (void);   
+void LD_B_n 	 (byte n);
+void LD_A_BC     (void);
+void LD_C_n    (byte n);
 
+void LD_DE_A     (void); 
+void LD_D_n    (byte n); 
+void LD_A_DE     (void);
+void LD_E_n    (byte n);
+void LD_HLP_A    (void);
 
-/**
- * @brief Load Register (immediate) 
- *
- * Load to the 8-bit Register B, the immediate data n 
- *
- * Instruction = 0x06
- * 
- * 
- * @return void
- */ 
-void LD_B_n(byte n);
-
-
-/**
- * @brief Load accumulator (indirect BC)
- *
- * Load to the 8-bit A register, data from the absolute address specified
- * by the 16-bit register BC
- *
- * Instruction = 0x0A
- * 
- *
- * @return void
- */ 
-void LD_A_BC(void);
-
-
-/**
- * @brief Load Register (immediate) 
- *
- * Load to the 8-bit Register C, the immediate data n 
- *
- * Instruction = 0x0E
- * 
- * @param n Immediate value to load
- * @return void
- */ 
-void LD_C_n(byte n);
-															 
-
-/**
- * @brief Load from accumulator (Indirect DE)
- *
- * Load to the absolute address specified by the 16-bit register DE,
- * data from the 8-bit A register.
- *
- * Instruction = 0x12
- * 
- * 
- * @return void
- */ 
-void LD_DE_A(void); 
-
-
-/**
- * @brief Load register (immediate)
- *
- * Load to the 8-bit register D, the immediate data n.
- *
- * Instruction = 0x16
- * 
- * @param n Immediate value to load
- * @return void
- */ 
-void LD_D_n(byte n); 
-
-
-/**
- * @brief Load accumulator (indirect BC)
- *
- * Load to the 8-bit A register, data from the absolute address specified
- * by the 16-bit register DE
- *
- * Instruction = 0x1A
- * 
- *
- * @return void
- */ 
-void LD_A_DE(void);
-
-
-/**
- * @brief Load register (immediate)
- *
- * Load to the 8-bit register E, the immediate data n.
- *
- * Instruction = 0x1E
- * 
- * @param n Immediate value to load
- * @return void
- */ 
-void LD_E_n(byte n);
-
-
-
-/**
- * @brief Load from accumulator (indirect HL, increment)
- *
- * Load to the absolute address specified by the 16-bit register HL,
- * data from the 8-bit A register.
- * The value of HL is incremented after the memory write.
- *
- * Instruction = 0x22
- * 
- * 
- * @return void
- */ 
-void LD_HLP_A(void);
-
-
-/**
- * @brief Load register (immediate)
- *
- * Load to the 8-bit register E, the immediate data n.
- *
- * Instruction = 0x1E
- * 
- * @param n Immediate value to load
- * @return void
- */ 
-void LD_H_n				   (void); // 0x26
-void LD_A_HLP				 (void); // 0x2A
-void LD_L_n				   (void); // 0x2E
+void LD_H_n		 (byte n); // 0x26
+void LD_A_HLP	 (void);   // 0x2A
+void LD_L_n	   (byte n); // 0x2E
 
 void LD_HLM_A				 (void); // 0x32
 void LD_HL_n				 (void); // 0x36

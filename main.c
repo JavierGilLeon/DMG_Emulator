@@ -5,9 +5,8 @@
 
 
 int main(){
-    InitCpuRegs();
-    InitMem();
-     
-    return 0;
+
+  InitCpuRegs();
+  InitMem();
 
 }

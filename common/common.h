@@ -1,8 +1,10 @@
 #ifndef H_COMMON_H
 #define H_COMMON_H
 
-typedef unsigned char byte;
-typedef unsigned short word;
+#include "stdint.h"
+
+typedef uint8_t byte;
+typedef uint16_t word;
 
 #define MEM_SIZE 0x10000
 

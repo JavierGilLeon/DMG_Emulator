@@ -12,18 +12,26 @@ typedef union cpu_regs{
 	word all;
 }CPU_REGS;
 
+typedef struct flags{
+	unsigned unused: 4;
+	unsigned C     : 1;
+	unsigned H     : 1;
+	unsigned N     : 1;
+	unsigned Z     : 1;
+}FLAGS;
+
+
+typedef union reg_F{
+	FLAGS bit;
+	byte  all;
+}REG_F;
+
 typedef union cpu_acc_flags{
 	word all;
 
 	struct{
 		byte High; 				//Accumulator
-	
-		struct{
-			unsigned Z : 1;
-			unsigned N : 1;
-			unsigned H : 1;
-			unsigned C : 1;
-		}Low;             //Flags
+	  REG_F Low;
 	};
 
 }CPU_ACC_FLAGS;
