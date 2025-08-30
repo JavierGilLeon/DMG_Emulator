@@ -2,7 +2,7 @@
 add_library(cpu
     src/cpu.c
     src/8bitLoads.c
-    src/opcodes.c
+    src/16bitLoads.c
 )
 
 target_include_directories(cpu PUBLIC
