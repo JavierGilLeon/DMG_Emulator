@@ -264,7 +264,7 @@ if __name__ == "__main__":
 
         for i in range(0,len(regs)):
             f.write(f"void ADC_{regs[i]}(void){{\n")
-            f.write(f"    byte c_bit = ({flag_reg} & {flags[C]}) == {flags[C]};\n")
+            f.write(f"    byte c_bit = !({flag_reg} & {flags[C]});\n")
             f.write(f"    word res = {regs_struct[0]} + {regs_struct[i]} + c_bit;\n")
             f.write(f"    byte carry = ({regs_struct[0]} & 0x0F) + ({regs_struct[i]} & 0x0F) + c_bit;\n")
             f.write("\n")
@@ -294,7 +294,7 @@ if __name__ == "__main__":
 
         for i in range(0,len(regs)):
             f.write(f"void SBC_{regs[i]}(void){{\n")
-            f.write(f"    byte c_bit = ({flag_reg} & {flags[C]}) == {flags[C]};\n")
+            f.write(f"    byte c_bit = !({flag_reg} & {flags[C]});\n")
             f.write(f"    word res = {regs_struct[0]} - {regs_struct[i]} - c_bit;\n")
             f.write(f"    byte half_carry = ({regs_struct[0]} & 0x0F) < (({regs_struct[i]} & 0x0F) + c_bit);\n")
             f.write(f"    byte carry = {regs_struct[0]} < ({regs_struct[i]} + c_bit);\n")
@@ -426,7 +426,7 @@ if __name__ == "__main__":
         # ADC (HL)
         f.write(f"void ADC_HL(void){{\n")
         f.write( "    byte data = getDataFrom(cpu.HL.all);\n")
-        f.write(f"    byte c_bit = ({flag_reg} & {flags[C]}) == {flags[C]};\n")
+        f.write(f"    byte c_bit = !({flag_reg} & {flags[C]});\n")
         f.write(f"    word res = {regs_struct[0]} + data + c_bit;\n")
         f.write(f"    byte carry = ({regs_struct[0]} & 0x0F) + (data & 0x0F) + c_bit;\n")
         f.write("\n")
@@ -453,7 +453,7 @@ if __name__ == "__main__":
         # SBC (HL)
         f.write(f"void SBC_HL(void){{\n")
         f.write( "    byte data = getDataFrom(cpu.HL.all);\n")
-        f.write(f"    byte c_bit = ({flag_reg} & {flags[C]}) == {flags[C]};\n")
+        f.write(f"    byte c_bit = !({flag_reg} & {flags[C]});\n")
         f.write(f"    word res = {regs_struct[0]} - data - c_bit;\n")
         f.write(f"    byte half_carry = ({regs_struct[0]} & 0x0F) < ((data & 0x0F) + c_bit);\n")
         f.write(f"    byte carry = {regs_struct[0]} < (data + c_bit);\n")
@@ -535,7 +535,7 @@ if __name__ == "__main__":
         #ADC n
         f.write(f"void ADC_n(void){{\n")
         f.write( "    byte n = getDataFrom(cpu.PC++);\n")
-        f.write(f"    byte c_bit = ({flag_reg} & {flags[C]}) == {flags[C]};\n")
+        f.write(f"    byte c_bit = !({flag_reg} & {flags[C]});\n")
         f.write(f"    word res = {regs_struct[0]} + n + c_bit;\n")
         f.write(f"    byte carry = ({regs_struct[0]} & 0x0F) + (n & 0x0F) + c_bit;\n")
         f.write("\n")
@@ -560,7 +560,7 @@ if __name__ == "__main__":
         # SBC n
         f.write(f"void SBC_n(void){{\n")
         f.write( "    byte n = getDataFrom(cpu.PC++);\n")
-        f.write(f"    byte c_bit = ({flag_reg} & {flags[C]}) == {flags[C]};\n")
+        f.write(f"    byte c_bit = !({flag_reg} & {flags[C]});\n")
         f.write(f"    word res = {regs_struct[0]} - n - c_bit;\n")
         f.write(f"    byte half_carry = ({regs_struct[0]} & 0x0F) < ((n & 0x0F) + c_bit);\n")
         f.write(f"    byte carry = {regs_struct[0]} < (n + c_bit);\n")

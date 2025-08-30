@@ -418,7 +418,7 @@ void SUB_L(void){
 /*----------------------------------------------------*/
 
 void ADC_A(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.AF.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.AF.High & 0x0F) + c_bit;
 
@@ -436,7 +436,7 @@ void ADC_A(void){
 
 
 void ADC_B(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.BC.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.BC.High & 0x0F) + c_bit;
 
@@ -454,7 +454,7 @@ void ADC_B(void){
 
 
 void ADC_C(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.BC.Low + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.BC.Low & 0x0F) + c_bit;
 
@@ -472,7 +472,7 @@ void ADC_C(void){
 
 
 void ADC_D(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.DE.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.DE.High & 0x0F) + c_bit;
 
@@ -490,7 +490,7 @@ void ADC_D(void){
 
 
 void ADC_E(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.DE.Low + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.DE.Low & 0x0F) + c_bit;
 
@@ -508,7 +508,7 @@ void ADC_E(void){
 
 
 void ADC_H(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.HL.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.HL.High & 0x0F) + c_bit;
 
@@ -526,7 +526,7 @@ void ADC_H(void){
 
 
 void ADC_L(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + cpu.HL.Low + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.HL.Low & 0x0F) + c_bit;
 
@@ -548,7 +548,7 @@ void ADC_L(void){
 /*----------------------------------------------------*/
 
 void SBC_A(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.AF.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.AF.High & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.AF.High + c_bit);
@@ -566,7 +566,7 @@ void SBC_A(void){
 }
 
 void SBC_B(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.BC.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.BC.High & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.BC.High + c_bit);
@@ -584,7 +584,7 @@ void SBC_B(void){
 }
 
 void SBC_C(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.BC.Low - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.BC.Low & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.BC.Low + c_bit);
@@ -602,7 +602,7 @@ void SBC_C(void){
 }
 
 void SBC_D(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.DE.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.DE.High & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.DE.High + c_bit);
@@ -620,7 +620,7 @@ void SBC_D(void){
 }
 
 void SBC_E(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.DE.Low - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.DE.Low & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.DE.Low + c_bit);
@@ -638,7 +638,7 @@ void SBC_E(void){
 }
 
 void SBC_H(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.HL.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.HL.High & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.HL.High + c_bit);
@@ -656,7 +656,7 @@ void SBC_H(void){
 }
 
 void SBC_L(void){
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - cpu.HL.Low - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.HL.Low & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (cpu.HL.Low + c_bit);
@@ -742,7 +742,7 @@ void SUB_HL(void){
 
 void ADC_HL(void){
     byte data = getDataFrom(cpu.HL.all);
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + data + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (data & 0x0F) + c_bit;
 
@@ -760,7 +760,7 @@ void ADC_HL(void){
 
 void SBC_HL(void){
     byte data = getDataFrom(cpu.HL.all);
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - data - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((data & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (data + c_bit);
@@ -817,7 +817,7 @@ void SUB_n(void){
 
 void ADC_n(void){
     byte n = getDataFrom(cpu.PC++);
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High + n + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (n & 0x0F) + c_bit;
 
@@ -835,7 +835,7 @@ void ADC_n(void){
 
 void SBC_n(void){
     byte n = getDataFrom(cpu.PC++);
-    byte c_bit = (cpu.AF.Low & C_FLAG) == C_FLAG;
+    byte c_bit = !(cpu.AF.Low & C_FLAG);
     word res = cpu.AF.High - n - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((n & 0x0F) + c_bit);
     byte carry = cpu.AF.High < (n + c_bit);
