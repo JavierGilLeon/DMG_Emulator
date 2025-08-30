@@ -3,6 +3,7 @@ add_library(cpu
     src/cpu.c
     src/8bitLoads.c
     src/16bitLoads.c
+    src/8bit_arithmetic.c
 )
 
 target_include_directories(cpu PUBLIC
