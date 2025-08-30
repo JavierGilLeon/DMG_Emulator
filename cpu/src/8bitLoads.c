@@ -1,161 +1,351 @@
 #include "cpu.h"
 #include "memory.h"
 
+/*----------------------------------------------------*/
+/*---------------- reg <- reg opcodes ----------------*/
+/*----------------------------------------------------*/
 
-//---------------- 0x02 ----------------
+void LD_A_B(void){
+    cpu.AF.High = cpu.BC.High;
+}
+
+void LD_A_C(void){
+    cpu.AF.High = cpu.BC.Low;
+}
+
+void LD_A_D(void){
+    cpu.AF.High = cpu.DE.High;
+}
+
+void LD_A_E(void){
+    cpu.AF.High = cpu.DE.Low;
+}
+
+void LD_A_H(void){
+    cpu.AF.High = cpu.HL.High;
+}
+
+void LD_A_L(void){
+    cpu.AF.High = cpu.HL.Low;
+}
+
+
+void LD_B_A(void){
+    cpu.BC.High = cpu.AF.High;
+}
+
+void LD_B_C(void){
+    cpu.BC.High = cpu.BC.Low;
+}
+
+void LD_B_D(void){
+    cpu.BC.High = cpu.DE.High;
+}
+
+void LD_B_E(void){
+    cpu.BC.High = cpu.DE.Low;
+}
+
+void LD_B_H(void){
+    cpu.BC.High = cpu.HL.High;
+}
+
+void LD_B_L(void){
+    cpu.BC.High = cpu.HL.Low;
+}
+
+
+void LD_C_A(void){
+    cpu.BC.Low = cpu.AF.High;
+}
+
+void LD_C_B(void){
+    cpu.BC.Low = cpu.BC.High;
+}
+
+void LD_C_D(void){
+    cpu.BC.Low = cpu.DE.High;
+}
+
+void LD_C_E(void){
+    cpu.BC.Low = cpu.DE.Low;
+}
+
+void LD_C_H(void){
+    cpu.BC.Low = cpu.HL.High;
+}
+
+void LD_C_L(void){
+    cpu.BC.Low = cpu.HL.Low;
+}
+
+
+void LD_D_A(void){
+    cpu.DE.High = cpu.AF.High;
+}
+
+void LD_D_B(void){
+    cpu.DE.High = cpu.BC.High;
+}
+
+void LD_D_C(void){
+    cpu.DE.High = cpu.BC.Low;
+}
+
+void LD_D_E(void){
+    cpu.DE.High = cpu.DE.Low;
+}
+
+void LD_D_H(void){
+    cpu.DE.High = cpu.HL.High;
+}
+
+void LD_D_L(void){
+    cpu.DE.High = cpu.HL.Low;
+}
+
+
+void LD_E_A(void){
+    cpu.DE.Low = cpu.AF.High;
+}
+
+void LD_E_B(void){
+    cpu.DE.Low = cpu.BC.High;
+}
+
+void LD_E_C(void){
+    cpu.DE.Low = cpu.BC.Low;
+}
+
+void LD_E_D(void){
+    cpu.DE.Low = cpu.DE.High;
+}
+
+void LD_E_H(void){
+    cpu.DE.Low = cpu.HL.High;
+}
+
+void LD_E_L(void){
+    cpu.DE.Low = cpu.HL.Low;
+}
+
+
+void LD_H_A(void){
+    cpu.HL.High = cpu.AF.High;
+}
+
+void LD_H_B(void){
+    cpu.HL.High = cpu.BC.High;
+}
+
+void LD_H_C(void){
+    cpu.HL.High = cpu.BC.Low;
+}
+
+void LD_H_D(void){
+    cpu.HL.High = cpu.DE.High;
+}
+
+void LD_H_E(void){
+    cpu.HL.High = cpu.DE.Low;
+}
+
+void LD_H_L(void){
+    cpu.HL.High = cpu.HL.Low;
+}
+
+
+void LD_L_A(void){
+    cpu.HL.Low = cpu.AF.High;
+}
+
+void LD_L_B(void){
+    cpu.HL.Low = cpu.BC.High;
+}
+
+void LD_L_C(void){
+    cpu.HL.Low = cpu.BC.Low;
+}
+
+void LD_L_D(void){
+    cpu.HL.Low = cpu.DE.High;
+}
+
+void LD_L_E(void){
+    cpu.HL.Low = cpu.DE.Low;
+}
+
+void LD_L_H(void){
+    cpu.HL.Low = cpu.HL.High;
+}
+
+
+/*----------------------------------------------------*/
+/*---------------- reg <- (HL) opcodes ---------------*/
+/*----------------------------------------------------*/
+
+void LD_A_HL(void){
+    cpu.AF.High = getDataFrom(cpu.HL.all);
+}
+
+void LD_B_HL(void){
+    cpu.BC.High = getDataFrom(cpu.HL.all);
+}
+
+void LD_C_HL(void){
+    cpu.BC.Low = getDataFrom(cpu.HL.all);
+}
+
+void LD_D_HL(void){
+    cpu.DE.High = getDataFrom(cpu.HL.all);
+}
+
+void LD_E_HL(void){
+    cpu.DE.Low = getDataFrom(cpu.HL.all);
+}
+
+void LD_H_HL(void){
+    cpu.HL.High = getDataFrom(cpu.HL.all);
+}
+
+void LD_L_HL(void){
+    cpu.HL.Low = getDataFrom(cpu.HL.all);
+}
+
+/*----------------------------------------------------*/
+/*---------------- (HL) <- reg opcodes ---------------*/
+/*----------------------------------------------------*/
+
+void LD_HL_A(void){
+    writeDataTo(cpu.HL.all,cpu.AF.High);
+}
+
+void LD_HL_B(void){
+    writeDataTo(cpu.HL.all,cpu.BC.High);
+}
+
+void LD_HL_C(void){
+    writeDataTo(cpu.HL.all,cpu.BC.Low);
+}
+
+void LD_HL_D(void){
+    writeDataTo(cpu.HL.all,cpu.DE.High);
+}
+
+void LD_HL_E(void){
+    writeDataTo(cpu.HL.all,cpu.DE.Low);
+}
+
+void LD_HL_H(void){
+    writeDataTo(cpu.HL.all,cpu.HL.High);
+}
+
+void LD_HL_L(void){
+    writeDataTo(cpu.HL.all,cpu.HL.Low);
+}
+
+/*----------------------------------------------------*/
+/*---------------- reg <- num opcodes ----------------*/
+/*----------------------------------------------------*/
+
+void LD_A_n(void){
+    cpu.AF.High = getDataFrom(cpu.PC++);
+}
+
+void LD_B_n(void){
+    cpu.BC.High = getDataFrom(cpu.PC++);
+}
+
+void LD_C_n(void){
+    cpu.BC.Low = getDataFrom(cpu.PC++);
+}
+
+void LD_D_n(void){
+    cpu.DE.High = getDataFrom(cpu.PC++);
+}
+
+void LD_E_n(void){
+    cpu.DE.Low = getDataFrom(cpu.PC++);
+}
+
+void LD_H_n(void){
+    cpu.HL.High = getDataFrom(cpu.PC++);
+}
+
+void LD_L_n(void){
+    cpu.HL.Low = getDataFrom(cpu.PC++);
+}
+
+/*----------------------------------------------------*/
+/*---------------- The rest of the LD8 opcodes -------*/
+/*----------------------------------------------------*/
+
 void LD_BC_A(void){
-    memory[cpu.BC.all] = cpu.AF.High;
-}  
-
-//---------------- 0x06 ----------------
-void LD_B_n (byte n){
-    cpu.BC.High = n;
+    writeDataTo(cpu.BC.all, cpu.AF.High);
 }
 
-//---------------- 0x0A ----------------
 void LD_A_BC(void){
-    cpu.AF.High = memory[cpu.BC.all];
-} 
-
-//---------------- 0x0E ----------------
-void LD_C_n (byte n){
-    cpu.BC.Low = n;
+    cpu.AF.High = getDataFrom(cpu.BC.all);
 }
 
-//---------------- 0x12 ----------------
 void LD_DE_A(void){
-    memory[cpu.DE.all] = cpu.AF.High;
-} 
-
-//---------------- 0x16 ----------------
-void LD_D_n(byte n){
-    cpu.DE.High = n;
+    writeDataTo(cpu.DE.all, cpu.AF.High);
 }
 
-//---------------- 0x1A ----------------
 void LD_A_DE(void){
-    cpu.AF.High = memory[cpu.DE.all];
-} 
-
-//---------------- 0x1E ----------------
-void LD_E_n(byte n){
-    cpu.DE.Low = n;
+    cpu.AF.High = getDataFrom(cpu.DE.all);
 }
 
-//---------------- 0x22 ----------------
 void LD_HLP_A(void){
-    memory[cpu.HL.all] = cpu.AF.High;
-    cpu.HL.all++;
-}  
-
-//---------------- 0x26 ----------------
-void LD_H_n(byte n){
-    cpu.DE.High = n;
+    writeDataTo(cpu.HL.all++, cpu.AF.High);
 }
 
-//---------------- 0x2A ----------------
 void LD_A_HLP(void){
-    cpu.AF.High = memory[cpu.HL.all];
-    cpu.HL.all++;
+    cpu.AF.High = getDataFrom(cpu.HL.all++);
 }
 
-//---------------- 0x2E ----------------
-void LD_L_n(byte n){
-    cpu.DE.Low = n;
-}
-
-//---------------- 0x32 ----------------
 void LD_HLM_A(void){
-    memory[cpu.HL.all] = cpu.AF.High;
-    cpu.HL.all--;
+    writeDataTo(cpu.HL.all--, cpu.AF.High);
 }
 
-//---------------- 0x36 ----------------
-void LD_HL_n(byte n){
-    memory[cpu.HL.all] = n;
-}
-
-//---------------- 0x3A ----------------
 void LD_A_HLM(void){
-    memory[cpu.HL.all] = cpu.AF.High;
-    cpu.HL.all--;
+    cpu.AF.High = getDataFrom(cpu.HL.all--);
 }
-void LD_A_n 				 (void); // 0x3E
 
-void LD_B_B 				 (void); // 0x40
-void LD_B_C 				 (void); // 0x41
-void LD_B_D 				 (void); // 0x42
-void LD_B_E 				 (void); // 0x43
-void LD_B_H 				 (void); // 0x44
-void LD_B_L 				 (void); // 0x45
-void LD_B_HL 				 (void); // 0x46
-void LD_B_A 				 (void); // 0x47
-void LD_C_B 				 (void); // 0x48
-void LD_C_C 				 (void); // 0x49
-void LD_C_D 				 (void); // 0x4A
-void LD_C_E 				 (void); // 0x4B
-void LD_C_H 				 (void); // 0x4C
-void LD_C_L 				 (void); // 0x4D
-void LD_C_HL 				 (void); // 0x4E
-void LD_C_A 				 (void); // 0x4F
+void LD_HL_n(void){
+    byte n = getDataFrom(cpu.PC++);
+    writeDataTo(cpu.HL.all,n);
+}
 
-void LD_D_B 				 (void); // 0x50
-void LD_D_C 				 (void); // 0x51
-void LD_D_D 				 (void); // 0x52
-void LD_D_E 				 (void); // 0x53
-void LD_D_H 				 (void); // 0x54
-void LD_D_L 				 (void); // 0x55
-void LD_D_HL 				 (void); // 0x56
-void LD_D_A 				 (void); // 0x57
-void LD_E_B 				 (void); // 0x58
-void LD_E_C 				 (void); // 0x59
-void LD_E_D 				 (void); // 0x5A
-void LD_E_E 				 (void); // 0x5B
-void LD_E_H 				 (void); // 0x5C
-void LD_E_L 				 (void); // 0x5D
-void LD_E_HL 				 (void); // 0x5E
-void LD_E_A 				 (void); // 0x5F
+void LDH_n_A(void){
+    byte n = getDataFrom(cpu.PC++);
+    writeDataTo(0xFF00+n, cpu.AF.High);
+}
 
-void LD_H_B 				 (void); // 0x60
-void LD_H_C 				 (void); // 0x61
-void LD_H_D 				 (void); // 0x62
-void LD_H_E 				 (void); // 0x63
-void LD_H_H 				 (void); // 0x64
-void LD_H_L 				 (void); // 0x65
-void LD_H_HL 				 (void); // 0x66
-void LD_H_A 				 (void); // 0x67
-void LD_L_B 				 (void); // 0x68
-void LD_L_C 				 (void); // 0x69
-void LD_L_D 				 (void); // 0x6A
-void LD_L_E 				 (void); // 0x6B
-void LD_L_H 				 (void); // 0x6C
-void LD_L_L 				 (void); // 0x6D
-void LD_L_HL 				 (void); // 0x6E
-void LD_L_A 				 (void); // 0x6F
+void LDH_C_A(void){
+    writeDataTo(0xFF00+cpu.BC.Low,cpu.AF.High);
+}
 
-void LD_HL_B 				 (void); // 0x70
-void LD_HL_C 				 (void); // 0x71
-void LD_HL_D 				 (void); // 0x72
-void LD_HL_E 				 (void); // 0x73
-void LD_HL_H 				 (void); // 0x74
-void LD_HL_L 				 (void); // 0x75
-void LD_HL_A 				 (void); // 0x77
-void LD_A_B 				 (void); // 0x78
-void LD_A_C 				 (void); // 0x79
-void LD_A_D 				 (void); // 0x7A
-void LD_A_E 				 (void); // 0x7B
-void LD_A_H 				 (void); // 0x7C
-void LD_A_L 				 (void); // 0x7D
-void LD_A_HL 				 (void); // 0x7E
-void LD_A_A 				 (void); // 0x7F
+void LD_nn_A(void){
+    byte lsb = getDataFrom(cpu.PC++);
+    byte msb = getDataFrom(cpu.PC++);
+    word ADDR = (msb << 8) | lsb;
+    writeDataTo(ADDR,cpu.AF.High);
+}
 
-void LDH_n_A 				 (void); // 0xE0
-void LDH_C_A 				 (void); // 0xE2
-void LD_nn_A 				 (void); // 0xEA
+void LDH_A_n(void){
+    byte ADDR = 0xFF00 + getDataFrom(cpu.PC++);
+    cpu.AF.High = getDataFrom(ADDR);
+}
 
-void LDH_A_n 				 (void); // 0xF0
-void LDH_A_C 				 (void); // 0xF2
-void LD_A_nn 				 (void); // 0xFA
+void LDH_A_C(void){
+    cpu.AF.High = getDataFrom(0xFF00 + cpu.BC.Low);
+}
 
-
+void LD_A_nn(void){
+    byte lsb = getDataFrom(cpu.PC++);
+    byte msb = getDataFrom(cpu.PC++);
+    word ADDR = (msb << 8)| lsb;
+    cpu.AF.High = getDataFrom(ADDR);
+}
 
