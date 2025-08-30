@@ -36,7 +36,7 @@ void InitCpuRegs(void)
  */
 byte FetchInstr(void)
 {
-    byte instr = memory[cpu.PC];
+    byte instr = getDataFrom(cpu.PC);
     printf("[CPU_FETCH] Instruction Fetched: 0x%02x\n",instr);
 
     cpu.PC++;

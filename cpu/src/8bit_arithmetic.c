@@ -188,7 +188,7 @@ void ADD_A(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.AF.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -204,7 +204,7 @@ void ADD_B(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.BC.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -220,7 +220,7 @@ void ADD_C(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.BC.Low & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -236,7 +236,7 @@ void ADD_D(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.DE.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -252,7 +252,7 @@ void ADD_E(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.DE.Low & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -268,7 +268,7 @@ void ADD_H(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.HL.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -284,7 +284,7 @@ void ADD_L(void){
     byte carry = (cpu.AF.High & 0x0F) + (cpu.HL.Low & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -305,7 +305,7 @@ void SUB_A(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.AF.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -321,7 +321,7 @@ void SUB_B(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.BC.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -337,7 +337,7 @@ void SUB_C(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.BC.Low & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -353,7 +353,7 @@ void SUB_D(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.DE.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -369,7 +369,7 @@ void SUB_E(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.DE.Low & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -385,7 +385,7 @@ void SUB_H(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.HL.High & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -401,7 +401,7 @@ void SUB_L(void){
     byte carry = (cpu.AF.High & 0x0F) < (cpu.HL.Low & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -418,12 +418,12 @@ void SUB_L(void){
 /*----------------------------------------------------*/
 
 void ADC_A(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.AF.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.AF.High & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -436,12 +436,12 @@ void ADC_A(void){
 
 
 void ADC_B(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.BC.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.BC.High & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -454,12 +454,12 @@ void ADC_B(void){
 
 
 void ADC_C(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.BC.Low + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.BC.Low & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -472,12 +472,12 @@ void ADC_C(void){
 
 
 void ADC_D(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.DE.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.DE.High & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -490,12 +490,12 @@ void ADC_D(void){
 
 
 void ADC_E(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.DE.Low + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.DE.Low & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -508,12 +508,12 @@ void ADC_E(void){
 
 
 void ADC_H(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.HL.High + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.HL.High & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -526,12 +526,12 @@ void ADC_H(void){
 
 
 void ADC_L(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + cpu.HL.Low + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (cpu.HL.Low & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -548,13 +548,13 @@ void ADC_L(void){
 /*----------------------------------------------------*/
 
 void SBC_A(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.AF.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.AF.High & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.AF.High + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.AF.High + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -566,13 +566,13 @@ void SBC_A(void){
 }
 
 void SBC_B(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.BC.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.BC.High & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.BC.High + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.BC.High + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -584,13 +584,13 @@ void SBC_B(void){
 }
 
 void SBC_C(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.BC.Low - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.BC.Low & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.BC.Low + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.BC.Low + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -602,13 +602,13 @@ void SBC_C(void){
 }
 
 void SBC_D(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.DE.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.DE.High & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.DE.High + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.DE.High + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -620,13 +620,13 @@ void SBC_D(void){
 }
 
 void SBC_E(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.DE.Low - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.DE.Low & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.DE.Low + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.DE.Low + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -638,13 +638,13 @@ void SBC_E(void){
 }
 
 void SBC_H(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.HL.High - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.HL.High & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.HL.High + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.HL.High + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -656,13 +656,13 @@ void SBC_H(void){
 }
 
 void SBC_L(void){
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - cpu.HL.Low - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((cpu.HL.Low & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (cpu.HL.Low + c_bit);
+    byte carry = cpu.AF.High < ((word)cpu.HL.Low + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -685,7 +685,7 @@ void INC_HL(void){
     writeDataTo(cpu.HL.all,res);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -699,7 +699,7 @@ void DEC_HL(void){
     writeDataTo(cpu.HL.all,res);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -712,7 +712,7 @@ void ADD_HL(void){
     byte carry = (cpu.AF.High & 0x0F) + (data & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -729,7 +729,7 @@ void SUB_HL(void){
     byte carry = (cpu.AF.High & 0x0F) < (data & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -742,12 +742,12 @@ void SUB_HL(void){
 
 void ADC_HL(void){
     byte data = getDataFrom(cpu.HL.all);
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + data + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (data & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -760,13 +760,13 @@ void ADC_HL(void){
 
 void SBC_HL(void){
     byte data = getDataFrom(cpu.HL.all);
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - data - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((data & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (data + c_bit);
+    byte carry = cpu.AF.High < ((word)data + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -787,7 +787,7 @@ void ADD_n(void){
     byte carry = (cpu.AF.High & 0x0F) + (n & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -804,7 +804,7 @@ void SUB_n(void){
     byte carry = (cpu.AF.High & 0x0F) < (n & 0x0F);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
@@ -817,12 +817,12 @@ void SUB_n(void){
 
 void ADC_n(void){
     byte n = getDataFrom(cpu.PC++);
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High + n + c_bit;
     byte carry = (cpu.AF.High & 0x0F) + (n & 0x0F) + c_bit;
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag
@@ -835,13 +835,13 @@ void ADC_n(void){
 
 void SBC_n(void){
     byte n = getDataFrom(cpu.PC++);
-    byte c_bit = !(cpu.AF.Low & C_FLAG);
+    byte c_bit = (cpu.AF.Low & C_FLAG) ? 1 : 0;
     word res = cpu.AF.High - n - c_bit;
     byte half_carry = (cpu.AF.High & 0x0F) < ((n & 0x0F) + c_bit);
-    byte carry = cpu.AF.High < (n + c_bit);
+    byte carry = cpu.AF.High < ((word)n + (word)c_bit);
 
     // update Z flag
-    res ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Set N flag
     cpu.AF.Low |= N_FLAG;
     // Update H flag
