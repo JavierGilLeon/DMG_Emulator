@@ -5,5 +5,5 @@ add_library(memory
 
 target_include_directories(memory PUBLIC
  include
- ${CMAKE_SOURCE_DIR}/include
+ ${CMAKE_SOURCE_DIR}/common # In order to access to common.h
 )

@@ -1,7 +1,12 @@
 #include <stdio.h>
 
-#include "ppu.h"
+#include "cpu.h"
+#include "memory.h"
+
 
 int main(){
-    return 0;
+
+  InitCpuRegs();
+  InitMem();
+
 }

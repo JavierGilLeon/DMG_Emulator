@@ -1,12 +1,16 @@
 cmake_minimum_required(VERSION 4.0.3) 
 project(DMG_Emulator C)
 
-add_subdirectory(memory)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+# Module Libraries
+add_subdirectory(memory)
+add_subdirectory(cpu)
+
+# Principal exec
 add_executable(${PROJECT_NAME} main.c)
 
-
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PRIVATE
 	memory
-
+	cpu
 	)
