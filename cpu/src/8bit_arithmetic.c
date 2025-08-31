@@ -712,7 +712,7 @@ void ADD_HL(void){
     byte carry = (cpu.AF.High & 0x0F) + (data & 0x0F);
 
     // update Z flag
-    (res 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
+    (res & 0xFF) ? (cpu.AF.Low &= ~Z_FLAG) : (cpu.AF.Low |= Z_FLAG);
     // Reset N flag
     cpu.AF.Low &= ~N_FLAG;
     // Update H flag

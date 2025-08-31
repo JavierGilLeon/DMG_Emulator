@@ -377,7 +377,7 @@ if __name__ == "__main__":
         f.write("\n")
 
         f.write( "    // update Z flag\n")
-        f.write(f"    (res 0xFF) ? ({flag_reg} &= ~{flags[Z]}) : ({flag_reg} |= {flags[Z]});\n")
+        f.write(f"    (res & 0xFF) ? ({flag_reg} &= ~{flags[Z]}) : ({flag_reg} |= {flags[Z]});\n")
 
         f.write( "    // Reset N flag\n")
         f.write(f"    {flag_reg} &= ~{flags[N]};\n")
